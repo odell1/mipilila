@@ -34,6 +34,7 @@ public class PilaArray<T> {
     ////
     /// Método para extraer (eliminar) y devolver el elemento de la cima
     /// 
+    @SuppressWarnings("unchecked")
     public T pop(){
         //1 Comprobamos si está vacía
         if(isEmpty()){
@@ -63,7 +64,34 @@ public class PilaArray<T> {
 
 
     public static void main(String[] args) throws Exception {
-        System.out.println("Hello, World!");
+          String[] prueba = {
+                "(4 + 6)"
+            };
+        
+          
+        for (String expr : prueba) {
+            System.out.printf("%s -> %s", expr, estaBalanceada(expr) ? "Balanceada" : "NO balanceada");
+        }//for
+        
     }//main
+ 
+    private static boolean estaBalanceada(String expr) {
+        PilaArray<Character> pila = new PilaArray<>();
+        System.out.println("Judas");
+        for (char c : expr.toCharArray()) {
+            if (c == '('  || c == '{') {
+                pila.push(c);
+            } else if (c == ')' ||  c == '}') {
+                if (pila.isEmpty()) return false;
+                char apertura = pila.pop();
+                if ((c == ')' && apertura != '(') ||
+                    (c == '}' && apertura != '{')) {
+                    return false;
+                }
+            }
+        }
+        return pila.isEmpty();
+    }//estaBalanceada
+
 
 }//public class PilaArray<T> 
