@@ -67,7 +67,9 @@ public class PilaArray<T> {
           String[] prueba = {
                 "(4 + 6)"
             };
-        
+        //////////
+        /// TO-DO Comprobar balanceo total.  Si están los operando completos.
+        /// ///////
           
         for (String expr : prueba) {
             System.out.printf("%s -> %s", expr, estaBalanceada(expr) ? "Balanceada" : "NO balanceada");
@@ -77,19 +79,19 @@ public class PilaArray<T> {
  
     private static boolean estaBalanceada(String expr) {
         PilaArray<Character> pila = new PilaArray<>();
-        System.out.println("Judas");
+        
         for (char c : expr.toCharArray()) {
             if (c == '('  || c == '{') {
                 pila.push(c);
-            } else if (c == ')' ||  c == '}') {
+            } else if (c == ')' ||  c == '}') { //2 if
                 if (pila.isEmpty()) return false;
                 char apertura = pila.pop();
                 if ((c == ')' && apertura != '(') ||
                     (c == '}' && apertura != '{')) {
                     return false;
-                }
-            }
-        }
+                }//2 if
+            }//1 if
+        }//for
         return pila.isEmpty();
     }//estaBalanceada
 
