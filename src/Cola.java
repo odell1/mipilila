@@ -62,7 +62,13 @@ public T sacar(){
     }//isEmpty
     
     public static void main(String[] args) {
-        
+        Cola<String> ColaImpresion= new Cola<>();
+
+        ColaImpresion.meter("Judas1.txt");
+        ColaImpresion.meter("Judas2.txt");
+        ColaImpresion.meter("Judas3.txt");
+
+
 
     }//main
 
